@@ -1,4 +1,4 @@
-domain: bbcat259.cloud.okteto.net
+domain: andryushabolkonskiy.cloud.okteto.net
 gateway:
   name: gateway
   repo: bbcat259/rsoi-lab4:gateway
