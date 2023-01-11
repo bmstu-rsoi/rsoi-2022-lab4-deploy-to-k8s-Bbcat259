@@ -21,22 +21,22 @@ jobs:
       - name: Login in dockerhub
         uses: docker/login-action@v2
         with:
-          username: Bbcat259
+          username: bbcat259
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
       
       - name: Build docker images
         run: |
-          docker build ./src/bonus-service/ -t Bbcat259/rsoi-lab4:bonus
-          docker build ./src/flight-service/ -t Bbcat259/rsoi-lab4:flight
-          docker build ./src/gateway-service/ -t Bbcat259/rsoi-lab4:gateway
-          docker build ./src/ticket-service/ -t Bbcat259/rsoi-lab4:ticket
+          docker build ./src/bonus-service/ -t bbcat259/rsoi-lab4:bonus
+          docker build ./src/flight-service/ -t bbcat259/rsoi-lab4:flight
+          docker build ./src/gateway-service/ -t bbcat259/rsoi-lab4:gateway
+          docker build ./src/ticket-service/ -t bbcat259/rsoi-lab4:ticket
 
       - name: Push docker images
         run: |
-          docker push Bbcat259/rsoi-lab4:bonus
-          docker push Bbcat259/rsoi-lab4:flight
-          docker push Bbcat259/rsoi-lab4:ticket
-          docker push Bbcat259/rsoi-lab4:gateway
+          docker push bbcat259/rsoi-lab4:bonus
+          docker push bbcat259/rsoi-lab4:flight
+          docker push bbcat259/rsoi-lab4:ticket
+          docker push bbcat259/rsoi-lab4:gateway
 
       - name: Deploy to Okteto
         run: |
