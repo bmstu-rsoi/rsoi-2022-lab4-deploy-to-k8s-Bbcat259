@@ -1,7 +1,8 @@
 FROM python:3.9
-COPY . /flight-service
-COPY requirements.txt /flight-service
-WORKDIR /flight-service
-RUN pip install -r requirements.txt
+COPY main.py /app/
+COPY database.py /app/
+COPY requirements.txt /app/
+WORKDIR /app
 EXPOSE 8060
-CMD ["python3", "flight-service.py"]
+RUN pip install -r requirements.txt
+CMD ["python3", "/app/main.py"]

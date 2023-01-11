@@ -2,6 +2,9 @@ name: GitHub Classroom Workflow
 on:
   push:
     branches: [ master ]
+env:
+  OKTETO_SERVER: ${{ secrets.OKTETO_SERVER }}
+  OKTETO_TOKEN: ${{ secrets.OKTETO_TOKEN }}
 jobs:
   build:
     name: Autograding
@@ -14,6 +17,35 @@ jobs:
       - uses: docker/setup-buildx-action@v2
 
       # TODO build, publish to docker hub, deploy to k8s
+
+      - name: Login in dockerhub
+        uses: docker/login-action@v2
+        with:
+          username: Bbcat259
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      
+      - name: Build docker images
+        run: |
+          docker build ./src/bonus-service/ -t Bbcat259/rsoi-lab4:bonus
+          docker build ./src/flight-service/ -t Bbcat259/rsoi-lab4:flight
+          docker build ./src/gateway-service/ -t Bbcat259/rsoi-lab4:gateway
+          docker build ./src/ticket-service/ -t Bbcat259/rsoi-lab4:ticket
+
+      - name: Push docker images
+        run: |
+          docker push Bbcat259/rsoi-lab4:bonus
+          docker push Bbcat259/rsoi-lab4:flight
+          docker push Bbcat259/rsoi-lab4:ticket
+          docker push Bbcat259/rsoi-lab4:gateway
+
+      - name: Deploy to Okteto
+        run: |
+          kubectl config set-cluster flight-service-cluster --server="$OKTETO_SERVER" --insecure-skip-tls-verify=true
+          kubectl config set-credentials cloud_okteto_com-user --token="$OKTETO_TOKEN"
+          kubectl config set-context default --cluster=flight-service-cluster --user=cloud_okteto_com-user --namespace="Bbcat259"
+          kubectl config use-context default
+          cd k8s && helm delete services && helm install services ./services-chart
+          sleep 60
 
       - name: Run API Tests
         uses: matt-ball/newman-action@master
