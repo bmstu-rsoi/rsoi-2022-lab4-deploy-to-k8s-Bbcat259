@@ -15,7 +15,7 @@ services:
       - "5432:5432"
 
   gateway:
-    image: Bbcat259/gateway-service
+    image: bbcat259/gateway-service
     build: src/gateway-service/
     container_name: gateway-cont
     restart: on-failure
@@ -28,7 +28,7 @@ services:
       - postgres
 
   bonus:
-    image: Bbcat259/bonus-service
+    image: bbcat259/bonus-service
     build: src/bonus-service/
     container_name: bonus-cont
     restart: on-failure
@@ -39,7 +39,7 @@ services:
 
 
   flight:
-    image: Bbcat259/flight-service
+    image: bbcat259/flight-service
     build: src/flight-service/
     container_name: flight-cont
     restart: on-failure
@@ -50,7 +50,7 @@ services:
 
 
   ticket:
-    image: Bbcat259/ticket-service
+    image: bbcat259/ticket-service
     build: src/ticket-service/
     container_name: ticket-cont
     restart: on-failure

@@ -4,7 +4,7 @@
 	"values": [
 		{
 			"key": "baseUrl",
-			"value": "http://app.Bbcat259.cloud.okteto.net",
+			"value": "http://app.bbcat259.cloud.okteto.net",
 			"enabled": true
 		}
 	],

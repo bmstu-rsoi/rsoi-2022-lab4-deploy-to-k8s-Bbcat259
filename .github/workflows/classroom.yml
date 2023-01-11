@@ -42,7 +42,7 @@ jobs:
         run: |
           kubectl config set-cluster flight-service-cluster --server="$OKTETO_SERVER" --insecure-skip-tls-verify=true
           kubectl config set-credentials cloud_okteto_com-user --token="$OKTETO_TOKEN"
-          kubectl config set-context default --cluster=flight-service-cluster --user=cloud_okteto_com-user --namespace="Bbcat259"
+          kubectl config set-context default --cluster=flight-service-cluster --user=cloud_okteto_com-user --namespace="bbcat259"
           kubectl config use-context default
           cd k8s && helm delete services && helm install services ./services-chart
           sleep 60

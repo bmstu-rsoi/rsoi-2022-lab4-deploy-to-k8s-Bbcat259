@@ -1,19 +1,19 @@
-domain: Bbcat259.cloud.okteto.net
+domain: bbcat259.cloud.okteto.net
 gateway:
   name: gateway
-  repo: Bbcat259/rsoi-lab4:gateway
+  repo: bbcat259/rsoi-lab4:gateway
   port: 8080
 ticket:
   name: ticket
-  repo: Bbcat259/rsoi-lab4:ticket
+  repo: bbcat259/rsoi-lab4:ticket
   port: 8070
 bonus:
   name: bonus
-  repo: Bbcat259/rsoi-lab4:bonus
+  repo: bbcat259/rsoi-lab4:bonus
   port: 8050
 flight:
   name: flight
-  repo: Bbcat259/rsoi-lab4:flight
+  repo: bbcat259/rsoi-lab4:flight
   port: 8060
 postgres:
   name: postgres
